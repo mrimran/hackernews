@@ -3,13 +3,29 @@
 type Query {
   info: String!
   feed: [Link!]!
-  single(id: ID!): Link
+#  single(id: ID!): Link
 }
 
 type Mutation {
   post(url: String!, description: String!): Link!
-  put(id: ID!, url: String, description: String): Link
-  delete(id: ID!): Link
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+#  put(id: ID!, url: String, description: String): Link
+#  delete(id: ID!): Link
+
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+#we expose only these fields to the clients not the password :)
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  links: [Link!]!
 }
 
 #type Link {
