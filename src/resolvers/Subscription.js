@@ -4,8 +4,18 @@ function newLinkSubscribe(parent, args, context, info) {
     }, info)
 }
 
+function newVoteSubscribe(parent, args, context, info) {
+    return context.db.subscription.vote ({
+        where: {mutation_in: ['CREATED']}
+    }, info)
+}
+
 const newLink = {
     subscribe: newLinkSubscribe
 }
 
-module.exports = {newLink}
+const newVote = {
+    subscribe: newVoteSubscribe
+}
+
+module.exports = {newLink, newVote}
