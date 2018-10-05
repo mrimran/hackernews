@@ -7,9 +7,10 @@ const fs = require('fs')
 const Query = require('./resolvers/Query')
 const Mutation = require('./resolvers/Mutation')
 const AuthPayload = require('./resolvers/AuthPayload')
+const Subscription = require('./resolvers/Subscription')
 
 try {
-  var config = yaml.safeLoad(fs.readFileSync('./database/prisma.yml', 'utf8'));
+  var config = yaml.safeLoad(fs.readFileSync('./database/prisma.yml', 'utf8'))
 } catch (e) {
   console.log(e);
 }
@@ -17,7 +18,8 @@ try {
 const resolvers = {
   Query,
   Mutation,
-  AuthPayload
+  AuthPayload,
+  Subscription
 }
 
 const server = new GraphQLServer({
@@ -35,6 +37,6 @@ const server = new GraphQLServer({
       debug: true
     })
   })
-});
+})
 
 server.start(() => console.log(`Server is running on http://localhost:4000`))
