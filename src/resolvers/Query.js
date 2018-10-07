@@ -15,7 +15,7 @@ async function feed(parent, args, context, info) {
         where, skip: args.skip, first: args.first, orderBy: args.orderBy
     }, `{id}`)
 
-    console.log('queriedlinks***', queriedLinks)
+    //console.log('queriedlinks***', queriedLinks)
 
     const countSelectionSet = `
         {
